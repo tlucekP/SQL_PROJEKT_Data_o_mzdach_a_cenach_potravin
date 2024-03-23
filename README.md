@@ -1,2 +1,2 @@
-# SQL_PROJEKT_Data_o_mzdach_a_cenach_potravin
+# SQL PROJEKT - Data o mzdách a cenách potravin
 Repozitář SQL projektu - ENGETO SQL Datová Akademie
