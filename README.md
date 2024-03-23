@@ -2,6 +2,6 @@
 Vítejte v mém repozitáři SQL projektu v rámci kurzu **Datová Akademie** (SQL), ENGETO
 
 
-## ÚVOD
+## **ÚVOD**
 Tento projekt bude sestávat z SQL dotazů a sady tabulek dle zadání, které budou sloužit jako podklad k zodpovězení definovaných otázek výzkumu.
 K získání datového podkladu použiji datové sady Engeto.
