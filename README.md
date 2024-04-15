@@ -21,6 +21,8 @@ Pro splnění projektu vytvořím dvě tabulky:
 2. ***t_peter_tluchor_project_SQL_secondary_final***
 > (pro dodatečná data o dalších evropských státech)
 
+Tyto tabulky následně použiji jako datový podklad pro získávání odpovědí na projektové otázky pomocí vypracovaných SQL dotazů.
+
 #### <ins>**Projektové otázky:**</ins>
 
 1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
@@ -46,5 +48,6 @@ Parametry sjednocené do nově vzniklé tabulky:
 - potraviny (food)
 - cena (price)
 
-Vytvoření nové tabulky pomocí SQL:
+## 1. Mzdy a ceny
 
+První tabulku s názvem t_peter_tluchor_sql_primary_final jsem vytvořil SQL dotazem uvedeným v SQL_1_wages_prices.sql v repozitáři tohoto projektu.
