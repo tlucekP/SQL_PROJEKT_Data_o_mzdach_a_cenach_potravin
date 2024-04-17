@@ -1,6 +1,8 @@
 /*
- * 1. Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
+ * MZDA A CENY
  */
+
+-- Vytvoření tabulky t_peter_tluchor_project_sql_primary_final
 
 CREATE OR REPLACE TABLE t_peter_tluchor_project_sql_primary_final AS
 SELECT
@@ -31,9 +33,17 @@ GROUP BY
     cp2.category_code,
     cpc.name;
 
+SELECT *
+FROM t_peter_tluchor_project_sql_primary_final tptpspf;
 
-
-
+-- zjištění ročního průměru pro každou pracovní kategorii
+SELECT
+	`year`,
+	job_category,
+	round(avg(wage), 0) AS round_yearly_wage
+FROM t_peter_tluchor_project_sql_primary_final tptpspf
+WHERE `year` BETWEEN 2000 AND 2021
+GROUP BY `year`, job_category;
 
 
 
