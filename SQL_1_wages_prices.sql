@@ -36,17 +36,22 @@ GROUP BY
 SELECT *
 FROM t_peter_tluchor_project_sql_primary_final tptpspf;
 
--- zjištění ročního průměru pro každou pracovní kategorii
-SELECT
-	`year`,
-	job_category,
-	round(avg(wage), 0) AS round_yearly_wage
-FROM t_peter_tluchor_project_sql_primary_final tptpspf
-WHERE `year` BETWEEN 2000 AND 2021
-GROUP BY `year`, job_category;
 
+-- zjištění trendu na základě rozdílu mezi průměrnou mzdou v roce 2000 a minimální mzdou mezi roky 2000 a 2021.
 
-
+SELECT 
+    job_category,
+    CASE 
+        WHEN AVG(wage) - MIN(wage) > 0 THEN 'Rostoucí'
+        WHEN AVG(wage) - MIN(wage) < 0 THEN 'Klesající'
+        ELSE 'Bez změny'
+    END AS trend
+FROM 
+    t_peter_tluchor_project_sql_primary_final tptpspf_
+WHERE 
+    year BETWEEN 2000 AND 2021
+GROUP BY 
+    job_category;
 
 
 
