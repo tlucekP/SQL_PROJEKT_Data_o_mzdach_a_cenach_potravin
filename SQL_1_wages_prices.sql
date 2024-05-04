@@ -226,30 +226,31 @@ wage_change AS (
         yearly_stats
 )
 SELECT
-    ps.year,
-    round(ps.avg_wage, 2) AS avg_wage,
-    round(ps.avg_price, 2) AS avg_price,
-    ROUND(((ps.avg_price - pc.prev_avg_price) / pc.prev_avg_price) * 100, 2) AS price_change_percentage,
-    ROUND(((ps.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100, 2) AS wage_change_percentage,
-    CASE WHEN ((ps.avg_price - pc.prev_avg_price) / pc.prev_avg_price) * 100 > ((ps.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100 + 10 THEN 'Ano' ELSE 'Ne'
+    ys.year,
+    round(ys.avg_wage, 2) AS avg_wage,
+    round(ys.avg_price, 2) AS avg_price,
+    ROUND(((ys.avg_price - pc.prev_avg_price) / pc.prev_avg_price) * 100, 2) AS price_change_percentage,
+    ROUND(((ys.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100, 2) AS wage_change_percentage,
+    CASE WHEN ((ys.avg_price - pc.prev_avg_price) / pc.prev_avg_price) * 100 > ((ys.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100 + 10 THEN 'Ano' ELSE 'Ne'
     	END AS focus_price_growth
 FROM
-    yearly_stats ps
+    yearly_stats ys
 JOIN
-    price_change pc ON ps.year = pc.year
+    price_change pc ON ys.year = pc.year
 JOIN
-    wage_change wc ON ps.year = wc.YEAR
+    wage_change wc ON ys.year = wc.YEAR
 WHERE
-    ps.avg_wage IS NOT NULL
-    AND ps.avg_price IS NOT NULL
+    ys.avg_wage IS NOT NULL
+    AND ys.avg_price IS NOT NULL
     AND pc.prev_avg_price IS NOT NULL;
    
--- Odpověď: Ani v jednom roce nebyl průměrný růst cen potravin výrazně více, než byl průměrný nárůst mezd (>10%).
+-- Odpověď: Ani v jednom roce nebyl průměrný růst cen potravin výrazně více, než byl průměrný nárůst mezd (>10%). V případě porovnávání jednotlivých
+-- kategorií pracovních odvětví a kategorií potravin by se výsledky mohly lišit.
 
 
 /*
  * 5. Otázka: Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách
- * potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?
+ * potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
  */
 
 
