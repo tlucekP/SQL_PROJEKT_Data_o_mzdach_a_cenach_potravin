@@ -188,7 +188,102 @@ WHERE cac.average_change_percentage = (
 	SELECT MIN(average_change_percentage)
 	FROM category_average_change cac);
 
--- 	Odpověď: Nejpomaleji zdrařuje Cukr krystalový.
+-- 	Odpověď: Nejpomaleji zdražuje Cukr krystalový.
+
+
+/*
+ * 4. Otázka: Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
+ */
+
+-- Pro zjištění si opět pomůžu klauzulí WITH. Vytvořím dvě tabulky, jednu pro zjištění ročních statistik vývoje průměrných mezd a cen (za celky)
+-- a tabulky následně spojím. V hlavním dotazu spočítám meziroční změnu cen potravin a mezd a porovnám, zda pro daný rok došlo k nárůstu cen 
+-- potravin o více než 10% vůči růstu mezd.
+
+WITH yearly_stats AS (
+    SELECT
+        year,
+        AVG(wage) AS avg_wage,
+        AVG(price) AS avg_price
+    FROM
+        t_peter_tluchor_project_sql_primary_final
+    GROUP BY
+        year
+),
+price_change AS (
+    SELECT
+        year,
+        avg_price,
+        LAG(avg_price) OVER (ORDER BY year) AS prev_avg_price
+    FROM
+        yearly_stats
+),
+wage_change AS (
+    SELECT
+        year,
+        avg_wage,
+        LAG(avg_wage) OVER (ORDER BY year) AS prev_avg_wage
+    FROM
+        yearly_stats
+)
+SELECT
+    ps.year,
+    round(ps.avg_wage, 2) AS avg_wage,
+    round(ps.avg_price, 2) AS avg_price,
+    ROUND(((ps.avg_price - pc.prev_avg_price) / pc.prev_avg_price) * 100, 2) AS price_change_percentage,
+    ROUND(((ps.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100, 2) AS wage_change_percentage,
+    CASE WHEN ((ps.avg_price - pc.prev_avg_price) / pc.prev_avg_price) * 100 > ((ps.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100 + 10 THEN 'Ano' ELSE 'Ne'
+    	END AS focus_price_growth
+FROM
+    yearly_stats ps
+JOIN
+    price_change pc ON ps.year = pc.year
+JOIN
+    wage_change wc ON ps.year = wc.YEAR
+WHERE
+    ps.avg_wage IS NOT NULL
+    AND ps.avg_price IS NOT NULL
+    AND pc.prev_avg_price IS NOT NULL;
+   
+-- Odpověď: Ani v jednom roce nebyl průměrný růst cen potravin výrazně více, než byl průměrný nárůst mezd (>10%).
+
+
+/*
+ * 5. Otázka: Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách
+ * potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
