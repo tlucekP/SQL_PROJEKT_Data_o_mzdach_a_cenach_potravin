@@ -34,7 +34,10 @@ GROUP BY
     cpc.name;
 
 SELECT *
-FROM t_peter_tluchor_project_sql_primary_final tptpspf;
+FROM t_peter_tluchor_project_sql_primary_final tptpspf
+ORDER BY `year` DESC;
+
+
 
 /*
  *  1. Otázka: Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
@@ -145,8 +148,8 @@ ON a.job_category = b.job_category;
  * 3. Otázka: Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
  */
 
--- Pro potřeby této otázky si pomůžu klauzulí WITH a to tak, že vytvořímm dvě pomocné tabulky. 1. pro výpočet meziroční změny cen a
--- 2. pro průměrnou změnu cen jednotlivých kategorií potravin. Jako první si napíšu dotaz pro meziroční změny cen.
+-- Pro potřeby této otázky si pomůžu klauzulí WITH a to tak, že vytvořímm dvě pomocné tabulky. První pro výpočet meziroční změny cen a
+-- druhou pro průměrnou změnu cen jednotlivých kategorií potravin. Jako první si napíšu dotaz pro meziroční změny cen.
 
 SELECT
 	a.`year`,
@@ -195,27 +198,25 @@ WHERE cac.average_change_percentage = (
  * 4. Otázka: Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
  */
 
--- Pro zjištění si opět pomůžu klauzulí WITH. Vytvořím dvě tabulky, jednu pro zjištění ročních statistik vývoje průměrných mezd a cen (za celky)
--- a tabulky následně spojím. V hlavním dotazu spočítám meziroční změnu cen potravin a mezd a porovnám, zda pro daný rok došlo k nárůstu cen 
+-- Pro zjištění si opět pomůžu klauzulí WITH. Vytvořím tři tabulky, jednu pro zjištění ročních statistik, dvě pro vývoje průměrných mezd a cen
+-- (za celky) a tabulky vývoje mezd a cen následně porovnám se statistikou v hlavním dotazu. Spočítám, zda pro daný rok došlo k nárůstu cen
 -- potravin o více než 10% vůči růstu mezd.
 
+
 WITH yearly_stats AS (
-    SELECT
-        year,
-        AVG(wage) AS avg_wage,
-        AVG(price) AS avg_price
-    FROM
-        t_peter_tluchor_project_sql_primary_final
-    GROUP BY
-        year
+	SELECT
+		year,
+		AVG(wage) AS avg_wage,
+		AVG(price) AS avg_price
+	FROM t_peter_tluchor_project_sql_primary_final
+	GROUP BY year
 ),
 price_change AS (
-    SELECT
-        year,
-        avg_price,
-        LAG(avg_price) OVER (ORDER BY year) AS prev_avg_price
-    FROM
-        yearly_stats
+	SELECT
+		year,
+		avg_price,
+		LAG(avg_price) OVER (ORDER BY year) AS prev_avg_price
+	FROM yearly_stats
 ),
 wage_change AS (
     SELECT
@@ -253,9 +254,55 @@ WHERE
  * potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
  */
 
+-- Vytvoření tabulky t_peter_tluchor_project_SQL_secondary_final
+   
+CREATE OR REPLACE TABLE t_peter_tluchor_project_sql_secondary_final AS
+	SELECT
+		e.year AS year,
+		e.gdp AS GDP,
+		a.job_category AS job_category,
+		a.wage AS wage,
+		a.food_category AS food_category,
+		a.food AS food,
+		a.price AS price
+FROM economies e
+LEFT JOIN t_peter_tluchor_project_sql_primary_final a
+	ON e.year = a.year
+WHERE e.year BETWEEN 2000 AND 2020
+	AND e.country = 'Czech republic';
 
+-- Dotaz vracející průměrné meziroční procentuální změny HDP, mezd a cen, na základě kterých lze analyzovat, jak se vyvíjela jejich meziroční hodnta
+-- a zda byl trend vůči HDP rychleji rostoucí nebo pomaleji rostoucí.
 
+SELECT 
+    year,
+    AVG(gdp_change_percentage) AS avg_gdp_change_percentage,
+    AVG(wage_change_percentage) AS avg_wage_change_percentage,
+    AVG(price_change_percentage) AS avg_price_change_percentage,
+    CASE
+        WHEN AVG(wage_change_percentage) > AVG(gdp_change_percentage) THEN 'Mzdy rostly rychleji než HDP'
+        WHEN AVG(wage_change_percentage) < AVG(gdp_change_percentage) THEN 'HDP rostlo rychleji než mzdy'
+        ELSE 'HDP a mzdy rostly stejně'
+    END AS wage_vs_gdp_trend,
+    CASE
+        WHEN AVG(price_change_percentage) > AVG(gdp_change_percentage) THEN 'Ceny rostly rychleji než HDP'
+        WHEN AVG(price_change_percentage) < AVG(gdp_change_percentage) THEN 'HDP rostlo rychleji než ceny'
+        ELSE 'HDP a ceny rostly stejně'
+    END AS price_vs_gdp_trend
+FROM (
+    SELECT 
+        year,
+        ROUND(((gdp_cz - LAG(gdp_cz) OVER (ORDER BY year)) / LAG(gdp_cz) OVER (ORDER BY year)) * 100,0) AS gdp_change_percentage,
+        ROUND(((wage - LAG(wage) OVER (PARTITION BY job_category ORDER BY year)) / LAG(wage) OVER (PARTITION BY job_category ORDER BY year)) * 100,0) AS wage_change_percentage,
+        ROUND(((price - LAG(price) OVER (PARTITION BY food_category ORDER BY year)) / LAG(price) OVER (PARTITION BY food_category ORDER BY year)) * 100,0) AS price_change_percentage
+    FROM t_peter_tluchor_project_sql_secondary_final
+) AS changes
+WHERE gdp_change_percentage IS NOT NULL
+	AND wage_change_percentage IS NOT NULL
+	AND price_change_percentage IS NOT NULL
+GROUP BY year;
 
+-- Odpověď: viz výsledek dotazu. V rámci mezd a cen jsem bral v potaz průměry mezd a cen všech odvětví a potravinových kategorií.
 
 
 
