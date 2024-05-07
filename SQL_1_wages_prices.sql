@@ -52,8 +52,7 @@ SELECT
         WHEN AVG(wage) - MIN(wage) < 0 THEN 'Klesající'
         ELSE 'Bez změny'
     END AS trend
-FROM 
-    t_peter_tluchor_project_sql_primary_final tptpspf_
+FROM t_peter_tluchor_project_sql_primary_final tptpspf_
 WHERE 
     year BETWEEN 2000 AND 2021
 GROUP BY 
@@ -185,8 +184,7 @@ category_average_change AS (
 SELECT
     'Kategorie s nejpomalejším zdražením' AS `result`,
     cac.food
-FROM
-    category_average_change cac
+FROM category_average_change cac
 WHERE cac.average_change_percentage = (
 	SELECT MIN(average_change_percentage)
 	FROM category_average_change cac);
@@ -223,8 +221,7 @@ wage_change AS (
         year,
         avg_wage,
         LAG(avg_wage) OVER (ORDER BY year) AS prev_avg_wage
-    FROM
-        yearly_stats
+    FROM yearly_stats
 )
 SELECT
     ys.year,
@@ -234,14 +231,12 @@ SELECT
     ROUND(((ys.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100, 2) AS wage_change_percentage,
     CASE WHEN ((ys.avg_price - pc.prev_avg_price) / pc.prev_avg_price) * 100 > ((ys.avg_wage - wc.prev_avg_wage) / wc.prev_avg_wage) * 100 + 10 THEN 'Ano' ELSE 'Ne'
     	END AS focus_price_growth
-FROM
-    yearly_stats ys
-JOIN
-    price_change pc ON ys.year = pc.year
-JOIN
-    wage_change wc ON ys.year = wc.YEAR
-WHERE
-    ys.avg_wage IS NOT NULL
+FROM yearly_stats ys
+JOIN price_change pc
+	ON ys.year = pc.year
+JOIN wage_change wc 
+	ON ys.year = wc.YEAR
+WHERE ys.avg_wage IS NOT NULL
     AND ys.avg_price IS NOT NULL
     AND pc.prev_avg_price IS NOT NULL;
    
