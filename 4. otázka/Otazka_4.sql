@@ -2,10 +2,6 @@
  * 4. Otázka: Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
  */
 
--- Pro zjištění si opět pomůžu klauzulí WITH. Vytvořím tři tabulky, jednu pro zjištění ročních statistik, dvě pro vývoje průměrných mezd a cen
--- (za celky) a tabulky vývoje mezd a cen následně porovnám se statistikou v hlavním dotazu. Spočítám, zda pro daný rok došlo k nárůstu cen
--- potravin o více než 10% vůči růstu mezd.
-
 
 WITH yearly_stats AS (
 	SELECT
@@ -45,6 +41,3 @@ JOIN wage_change wc
 WHERE ys.avg_wage IS NOT NULL
     AND ys.avg_price IS NOT NULL
     AND pc.prev_avg_price IS NOT NULL;
-   
--- Odpověď: Ani v jednom roce nebyl průměrný růst cen potravin výrazně více, než byl průměrný nárůst mezd (>10%). V případě porovnávání jednotlivých
--- kategorií pracovních odvětví a kategorií potravin by se výsledky mohly lišit.

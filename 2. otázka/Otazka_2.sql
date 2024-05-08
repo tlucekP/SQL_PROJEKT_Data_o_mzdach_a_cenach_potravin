@@ -18,8 +18,6 @@ WHERE price IS NOT NULL
 ORDER BY `year` DESC;
 
 
--- zjištění podílu 1 litru mléka a chleba (1kg) za průměrnou mzdu každého z pracovních odvětví v roce 2006
-
 SELECT
 	a.`year`,
 	a.job_category,
@@ -47,8 +45,6 @@ LEFT JOIN
 ON a.job_category = b.job_category;
 
 
--- zjištění podílu 1 litru mléka a chleba (1kg) za průměrnou mzdu každého z pracovních odvětví v roce 2018
-
 SELECT
 	a.`year`,
 	a.job_category,
@@ -74,7 +70,3 @@ LEFT JOIN
 		AND `year` = 2018
 	GROUP BY job_category) b
 ON a.job_category = b.job_category;
-
--- 	Odpověď: Konkrétní počty 1 litru mléka a 1 kilogramu chleba v prvním a posledním sledovaném období (čili v letech 2006 a 2018)
---	jsou výstupem syntaxe. Po bližším zkoumání je zřejmé, že jednotlivé sledované komodity vůči některým konkrétním
---	pracovním odvětvím zdražovali více, než rostli průměrné mzdy a v roce 2018 si jich za konkrétní průměrnou mzdu lze koupit méně.

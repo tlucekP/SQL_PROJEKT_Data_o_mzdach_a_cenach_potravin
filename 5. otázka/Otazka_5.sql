@@ -1,9 +1,6 @@
 /*
- * 5. Otázka: Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách
- * potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
+ * Vytvoření tabulky t_peter_tluchor_project_SQL_secondary_final
  */
-
--- Vytvoření tabulky t_peter_tluchor_project_SQL_secondary_final
    
 CREATE OR REPLACE TABLE t_peter_tluchor_project_sql_secondary_final AS
 	SELECT
@@ -20,8 +17,12 @@ LEFT JOIN t_peter_tluchor_project_sql_primary_final a
 WHERE e.year BETWEEN 2000 AND 2020
 	AND e.country = 'Czech republic';
 
--- Dotaz vracející průměrné meziroční procentuální změny HDP, mezd a cen, na základě kterých lze analyzovat, jak se vyvíjela jejich meziroční hodnta
--- a zda byl trend vůči HDP rychleji rostoucí nebo pomaleji rostoucí.
+
+
+/*
+ * 5. Otázka: Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách
+ * potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?
+ */
 
 SELECT 
     year,
@@ -50,5 +51,3 @@ WHERE gdp_change_percentage IS NOT NULL
 	AND wage_change_percentage IS NOT NULL
 	AND price_change_percentage IS NOT NULL
 GROUP BY year;
-
--- Odpověď: viz výsledek dotazu. V rámci mezd a cen jsem bral v potaz průměry mezd a cen všech odvětví a potravinových kategorií.

@@ -2,9 +2,6 @@
  * 3. Otázka: Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
  */
 
--- Pro potřeby této otázky si pomůžu klauzulí WITH a to tak, že vytvořímm dvě pomocné tabulky. První pro výpočet meziroční změny cen a
--- druhou pro průměrnou změnu cen jednotlivých kategorií potravin. Jako první si napíšu dotaz pro meziroční změny cen.
-
 SELECT
 	a.`year`,
     a.food,
@@ -43,5 +40,3 @@ FROM category_average_change cac
 WHERE cac.average_change_percentage = (
 	SELECT MIN(average_change_percentage)
 	FROM category_average_change cac);
-
--- 	Odpověď: Nejpomaleji zdražuje Cukr krystalový.
