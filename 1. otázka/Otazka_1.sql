@@ -1,8 +1,6 @@
 /*
- * MZDA A CENY
- */
-
--- Vytvoření tabulky t_peter_tluchor_project_sql_primary_final
+ * Vytvoření tabulky t_peter_tluchor_project_sql_primary_final
+ */ 
 
 CREATE OR REPLACE TABLE t_peter_tluchor_project_sql_primary_final AS
 SELECT
@@ -34,16 +32,13 @@ GROUP BY
     cpc.name;
 
 SELECT *
-FROM t_peter_tluchor_project_sql_primary_final tptpspf
-ORDER BY `year` DESC;
+FROM t_peter_tluchor_project_sql_primary_final tptpspf;
 
 
 
 /*
  *  1. Otázka: Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
  */
-
--- zjištění trendu na základě rozdílu mezi průměrnou mzdou v roce 2000 a minimální mzdou mezi roky 2000 a 2021.
 
 SELECT 
     job_category,
@@ -57,5 +52,3 @@ WHERE
     year BETWEEN 2000 AND 2021
 GROUP BY 
     job_category;
-   
--- 	ODPOVĚĎ: ve všech pracovních odvětvích je trend průměrné mzdy rostoucí.
