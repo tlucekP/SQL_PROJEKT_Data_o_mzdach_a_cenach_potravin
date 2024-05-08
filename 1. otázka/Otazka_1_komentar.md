@@ -18,7 +18,7 @@ Výsledkem je ucelená tabulka s nejnutnějšími daty pro následné dotazován
 - food (typ potravin)
 - price (ceny potravin)
 
-Kontrolu provedeme standardním dotazováním na výpis dat.
+Kontrolu provedeme standardním dotazováním na výpis dat. Pro rychlejší budoucí práci s databází jsem hodnoty v této nově vytvořené tabulce zaindexoval.
 
 Nyní mohu přistoupit k dotazování na samotnou pointu zadání, tedy zda v průběhu let rostou mzdy ve všech pracovních odvětvích nebo klesají.
 
