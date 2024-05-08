@@ -2,8 +2,11 @@
 
 Pro zodpovězení této (a dalších otázek) si vytvořím tabulku **t_peter_tluchor_project_sql_primary_final**. Tato tabulka bude obsahovat spojení datových sad:
 > czechia_payroll
+> 
 > czechia_payroll_industry_branch
+> 
 > czechia_price
+> 
 > czechia_price_category
 
 Výsledkem je ucelená tabulka s nejnutnějšími daty pro následné dotazování. Tabulka obsahuje sloupce:
