@@ -19,7 +19,7 @@ Pro splnění projektu vytvořím dvě tabulky:
 1. ***t_peter_tluchor_project_SQL_primary_final***
 >   (pro data mezd a cen potravin za Českou republiku sjednocených na totožné porovnatelné období – společné roky)
 2. ***t_peter_tluchor_project_SQL_secondary_final***
-> (pro dodatečná data o dalších evropských státech)
+> (pro údaje o HDP, případně o dodatečná data o dalších evropských státech)
 
 Tyto tabulky následně použiji jako datový podklad pro získávání odpovědí na projektové otázky pomocí vypracovaných SQL dotazů.
 
@@ -48,6 +48,4 @@ Parametry sjednocené do nově vzniklé tabulky:
 - potraviny (food)
 - cena (price)
 
-## 1. Mzdy a ceny
-
-První tabulku s názvem t_peter_tluchor_sql_primary_final jsem vytvořil SQL dotazem uvedeným v SQL_1_wages_prices.sql v repozitáři tohoto projektu.
+Zpracování jednotlivých otázek strukturuji do samostatných složek mého projektového Engeto repozitáře.
