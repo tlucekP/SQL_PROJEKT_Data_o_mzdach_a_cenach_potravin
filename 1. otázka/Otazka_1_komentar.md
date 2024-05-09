@@ -9,6 +9,10 @@ Pro zodpovězení této (a dalších otázek) si vytvořím tabulku **t_peter_tl
 > 
 > czechia_price_category
 
+Pro usnadnění pochopení vztahů mezi jednotlivými datovými sadami a jejich vazbami pro spojení do nové tabulky jsem si vytvořil jejich ERD vizualizaci pomocí nástroje [dbdiagram.io](https://dbdiagram.io/home).
+
+![ERD_sql_primary_final](https://github.com/tlucekP/SQL_PROJEKT_ENGETO_Datova_akademie_22_2_2024/assets/160940948/3d0bf642-eec2-4c3c-bd99-d57fe99cc3f1)
+
 Výsledkem je ucelená tabulka s nejnutnějšími daty pro následné dotazování. Tabulka obsahuje sloupce:
 
 - year (rok)
