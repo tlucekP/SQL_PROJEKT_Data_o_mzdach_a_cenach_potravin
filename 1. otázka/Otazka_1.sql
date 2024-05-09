@@ -1,3 +1,5 @@
+-- Discord: Tlucek#0754
+
 /*
  * Vytvoření tabulky t_peter_tluchor_project_sql_primary_final
  */ 
