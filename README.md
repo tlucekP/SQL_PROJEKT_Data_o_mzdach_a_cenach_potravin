@@ -4,7 +4,7 @@
 Vítejte v mém repozitáři SQL projektu v rámci kurzu **Datová Akademie** (SQL), ENGETO.
 
 <ins>Poděkování:</ins>
-ENGETO lektorům SQL části (Jan Kammermayer a Matěj Karolyi), rodině za podporu při studiu a všem, kteří mi ve volném čase s problematikou SQL pomáhali.
+ENGETO lektorům SQL části (Jan Kammermayer, Matěj Karolyi, Pavel Fryblík), rodině za podporu při studiu a všem, kteří mi ve volném čase s problematikou SQL pomáhali.
 
 ## <ins>**ÚVOD**</ins>
 Tento projekt bude sestávat z:
@@ -21,7 +21,7 @@ Pro splnění projektu vytvořím dvě tabulky:
 2. ***t_peter_tluchor_project_SQL_secondary_final***
 > (pro údaje o HDP, případně o dodatečná data o dalších evropských státech)
 
-Tyto tabulky následně použiji jako datový podklad pro získávání odpovědí na projektové otázky pomocí vypracovaných SQL dotazů.
+Tyto tabulky následně použiji jako výchozí datové podklady pro získávání odpovědí na projektové otázky pomocí vypracovaných SQL dotazů.
 
 #### <ins>**Projektové otázky:**</ins>
 
@@ -31,21 +31,5 @@ Tyto tabulky následně použiji jako datový podklad pro získávání odpověd
 4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
 5. Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo násdujícím roce výraznějším růstem?
 
-Pro zodpovězení projektových otázek první části, tzn. oblasti týkající se mezd a cen potravin (otázky 1-4) jsem si vytvořil tabulku **t_peter_tluchor_project_SQL_primary_final**. Pro jednotné účely nově vzniklé tabulky jsem musel identifikovat potřebné parametry pro budoucí SQL dotazy. Datové sady, které jsem použil pro vznik jednotné tabulky jsou:
-- czechia_payroll
-- czechia_payroll_calculation
-- czechia_payroll_industry_branch
-- czechia_payroll_unit
-- czechia_payroll_value_type
-- czechia_price
-- czechia_price_category
-
-Parametry sjednocené do nově vzniklé tabulky:
-- rok (year)
-- pracovní kategorie (job_category)
-- mzda (wage)
-- kategorie potravin (food_category)
-- potraviny (food)
-- cena (price)
 
 Zpracování jednotlivých otázek strukturuji do samostatných složek mého projektového Engeto repozitáře.
