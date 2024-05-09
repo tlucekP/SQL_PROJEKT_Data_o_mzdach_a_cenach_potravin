@@ -5,6 +5,6 @@ Jako první jsem si napsal dotaz pro meziroční změny cen.
 
 Pomocí WITH si z ní vytvořím pomocnou tabulku a navážu druhou pomocnou tabulkou pro zjištění průměrné změny. Tento dotaz pak doplním o SELECT, který mi ukáže výsledek.
 
-> Bohužel jsem v tomto případě nebyl schopen identifikovat a eliminovat dlouhou dobu zpracování celého dotazu.
+> Bohužel jsem v tomto případě nebyl schopen identifikovat a eliminovat příčinu dlouhé doby zpracování celého dotazu.
 
 **<ins>ODPOVĚĎ</ins>**: Nejpomaleji zdražoval Cukr krystalový.
