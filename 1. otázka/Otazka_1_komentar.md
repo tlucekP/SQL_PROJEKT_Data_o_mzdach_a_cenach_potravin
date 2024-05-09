@@ -25,6 +25,6 @@ Nyní mohu přistoupit k dotazování na samotnou pointu zadání, tedy zda v pr
 
 Ke zjištění přistupuji dotazováním se na trend na základě rozdílu mezi průměrnou mzdou v roce 2000 a minimální mzdou mezi lety 2000 - 2021.
 
-**ODPOVĚĎ**: Ve všech pracovních kategoriích je trend průměrné mzdy rostoucí.
+**<ins>ODPOVĚĎ</ins>**: Ve všech pracovních kategoriích je trend průměrné mzdy rostoucí.
 
 **Zdůvodnění**: Mzdy jsou v tabulce uváděny na kvartální bázi. Pro záskání uceleného pohledu na jejich meziroční vývoj jsem musel zprůměrovat mzdy za každý sledovaný rok.
