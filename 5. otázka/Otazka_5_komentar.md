@@ -20,4 +20,4 @@ Kontrolu provedem standardním dotazováním na výpis dat.
 Pro zodpovězení otázky jsem zpracoval dotaz, který vrací průměrné meziroční procentuální změny HDP, mezd a cen potravin (všech profesí o typu potravin), na základě kterých lze analyzovat, jak se
 vyvíjela jejich meziroční hodnota a zda byl trend vůči HDP rychleji rostoucí nebo pomaleji rostoucí.
 
-**ODPOVĚĎ**: viz výsledek dotazu.
+**<ins>ODPOVĚĎ</ins>**: viz výsledek dotazu.
