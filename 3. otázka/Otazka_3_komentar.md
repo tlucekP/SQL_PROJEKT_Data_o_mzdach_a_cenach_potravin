@@ -7,4 +7,4 @@ Pomocí WITH si z ní vytvořím pomocnou tabulku a navážu druhou pomocnou tab
 
 > Bohužel jsem v tomto případě nebyl schopen identifikovat a eliminovat dlouhou dobu zpracování celého dotazu.
 
-**ODPOVĚĎ**: Nejpomaleji zdražoval Cukr krystalový.
+**<ins>ODPOVĚĎ</ins>**: Nejpomaleji zdražoval Cukr krystalový.
