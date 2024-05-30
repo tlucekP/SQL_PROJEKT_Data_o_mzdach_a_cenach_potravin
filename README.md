@@ -31,3 +31,5 @@ Pro splnění projektu vytvořím dvě tabulky:
 Tyto tabulky následně použiji jako výchozí datové podklady pro získávání odpovědí na projektové otázky pomocí vypracovaných SQL dotazů.
 
 Zpracování jednotlivých otázek strukturuji do samostatných složek mého projektového Engeto repozitáře.
+
+Discord: Tlucek#0754
