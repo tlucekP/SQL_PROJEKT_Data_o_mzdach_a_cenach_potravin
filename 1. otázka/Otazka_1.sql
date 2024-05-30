@@ -6,7 +6,7 @@
 
 CREATE OR REPLACE TABLE t_peter_tluchor_project_sql_primary_final AS
 SELECT
-    cp.payroll_year AS 'year',
+    cp.payroll_year AS year,
     cpib.name AS job_category,
     cp.value AS wage,
     cp2.category_code AS food_category,
