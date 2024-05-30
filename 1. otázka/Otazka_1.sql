@@ -43,7 +43,7 @@ SELECT
         WHEN AVG(wage) - MIN(wage) < 0 THEN 'Klesající'
         ELSE 'Bez změny'
     END AS trend
-FROM t_peter_tluchor_project_sql_primary_final tptpspf_
+FROM t_peter_tluchor_project_sql_primary_final tptpspf
 WHERE 
     year BETWEEN 2000 AND 2021
 GROUP BY 
