@@ -33,10 +33,6 @@ GROUP BY
     cp2.category_code,
     cpc.name;
 
-SELECT *
-FROM t_peter_tluchor_project_sql_primary_final tptpspf;
-
-
 
 /*
  *  1. Otázka: Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
