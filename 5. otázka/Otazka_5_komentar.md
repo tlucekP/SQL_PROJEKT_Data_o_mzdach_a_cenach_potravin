@@ -20,4 +20,4 @@ Kontrolu provedeme standardním dotazováním na výpis dat.
 Pro zodpovězení otázky jsem zpracoval dotaz, který vrací průměrné meziroční procentuální změny HDP, mezd a cen potravin (všech profesí o typu potravin), na základě kterých lze analyzovat, jak se
 vyvíjela jejich meziroční hodnota a zda byl trend vůči HDP rychleji rostoucí nebo pomaleji rostoucí.
 
-**<ins>ODPOVĚĎ</ins>**: viz výsledek dotazu.
+**<ins>ODPOVĚĎ</ins>**: Ano, výška HDP má vliv na vývoj mezd a cen potravin. Změna výše mezd a potravin má ale oproti HDP jedno roční zpoždění. Nicméně mzdy i ceny potravin rostou nebo klesají nezávisle na sobě. Z dostupných dat tento trend pozorujeme na letech 2008 - 2018, přičemž mezi lety 2008 - 2015 svět procházel obdobím celosvětové finanční krize. I z toho důvodu je toto sledované období zatíženo ekonomickými specifiky, které v jednotlivých letech nemusí podporovat tvrzení o vázaném růstu či poklesu HDP, mezd a komodit. Již po roce 2013 byl na vzestupu zaměstnanecký sektor, kdežto ceny potravin reagovaly na uzdravený trh až po roce 2016.
