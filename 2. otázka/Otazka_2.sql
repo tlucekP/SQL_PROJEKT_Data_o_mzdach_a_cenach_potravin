@@ -36,8 +36,21 @@ BreadData AS (
 		AND price IS NOT NULL
 	GROUP BY `year`
 ),
-	
-	
+CombinedData AS (
+	SELECT
+		m.`year`,
+		m.milk_per_wage,
+		b.bread_per_wage
+	FROM MilkData m
+	JOIN BreadData b ON m.`year` = b.`year`
+)
+SELECT
+	`year`,
+	milk_per_wage,
+	bread_per_wage
+FROM CombinedData
+WHERE `year` = (SELECT MIN(`year`) FROM CombinedData)
+	OR `year` = (SELECT MAX(`year`) FROM CombinedData);
 	
 	
 	
