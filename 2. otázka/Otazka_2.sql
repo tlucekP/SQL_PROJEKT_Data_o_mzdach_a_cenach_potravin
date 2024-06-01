@@ -22,7 +22,24 @@ WITH MilkData AS (
 	SELECT
 		`year`,
 		ROUND(avg(wage/price), 0) AS milk_per_wage
-	FROM t_peter_tluchor_project_sql_primary_final tptpspf
+	FROM t_peter_tluchor_project_sql_primary_final
 	WHERE food LIKE '%mleko%'
 		AND price IS NOT NULL
 	GROUP BY `year`
+),
+BreadData AS (
+	SELECT
+		`year`,
+		ROUND(AVG(wage/price), 0) AS bread_per_wage
+	FROM t_peter_tluchor_project_sql_primary_final
+	WHERE food LIKE '%chleb%'
+		AND price IS NOT NULL
+	GROUP BY `year`
+),
+	
+	
+	
+	
+	
+	
+	
