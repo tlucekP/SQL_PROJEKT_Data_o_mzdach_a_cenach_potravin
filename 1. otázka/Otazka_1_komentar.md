@@ -9,6 +9,10 @@ Pro zodpovězení této (a dalších otázek) si vytvořím tabulku **t_peter_tl
 > 
 > czechia_price_category
 
+Pro usnadnění pochopení vztahů mezi jednotlivými datovými sadami a jejich vazbami pro spojení do nové tabulky jsem si vytvořil jejich ERD vizualizaci pomocí nástroje [dbdiagram.io](https://dbdiagram.io/home).
+
+![ERD_sql_primary_final](https://github.com/tlucekP/SQL_PROJEKT_ENGETO_Datova_akademie_22_2_2024/assets/160940948/3d0bf642-eec2-4c3c-bd99-d57fe99cc3f1)
+
 Výsledkem je ucelená tabulka s nejnutnějšími daty pro následné dotazování. Tabulka obsahuje sloupce:
 
 - year (rok)
@@ -25,6 +29,6 @@ Nyní mohu přistoupit k dotazování na samotnou pointu zadání, tedy zda v pr
 
 Ke zjištění přistupuji dotazováním se na trend na základě rozdílu mezi průměrnou mzdou v roce 2000 a minimální mzdou mezi lety 2000 - 2021.
 
-**ODPOVĚĎ**: Ve všech pracovních kategoriích je trend průměrné mzdy rostoucí.
+**<ins>ODPOVĚĎ</ins>**: Ve všech pracovních kategoriích je trend průměrné mzdy rostoucí.
 
 **Zdůvodnění**: Mzdy jsou v tabulce uváděny na kvartální bázi. Pro záskání uceleného pohledu na jejich meziroční vývoj jsem musel zprůměrovat mzdy za každý sledovaný rok.

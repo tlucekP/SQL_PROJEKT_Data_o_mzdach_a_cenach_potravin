@@ -4,7 +4,7 @@
 
 CREATE OR REPLACE TABLE t_peter_tluchor_project_sql_primary_final AS
 SELECT
-    cp.payroll_year AS 'year',
+    cp.payroll_year AS year,
     cpib.name AS job_category,
     cp.value AS wage,
     cp2.category_code AS food_category,
@@ -31,10 +31,6 @@ GROUP BY
     cp2.category_code,
     cpc.name;
 
-SELECT *
-FROM t_peter_tluchor_project_sql_primary_final tptpspf;
-
-
 
 /*
  *  1. Otázka: Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
@@ -47,7 +43,7 @@ SELECT
         WHEN AVG(wage) - MIN(wage) < 0 THEN 'Klesající'
         ELSE 'Bez změny'
     END AS trend
-FROM t_peter_tluchor_project_sql_primary_final tptpspf_
+FROM t_peter_tluchor_project_sql_primary_final tptpspf
 WHERE 
     year BETWEEN 2000 AND 2021
 GROUP BY 
